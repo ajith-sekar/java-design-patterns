@@ -1,89 +1,55 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.iluwatar</groupId>
-  <artifactId>java-design-patterns</artifactId>
-  <version>1.26.0-SNAPSHOT</version>
-  <packaging>pom</packaging>
+  <parent>
+    <groupId>com.iluwatar</groupId>
+    <artifactId>java-design-patterns</artifactId>
+    <version>1.26.0-SNAPSHOT</version>
+  </parent>
 
-  <inceptionYear>2014-2022</inceptionYear>
-  <name>Java Design Patterns</name>
-  <description>Java Design Patterns</description>
+  <artifactId>abstract-factory</artifactId>
+  <name>Abstract Factory Pattern</name>
+  <packaging>jar</packaging>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <sonar-maven-plugin.version>5.0.0.4389</sonar-maven-plugin.version>
-    <spring-boot.version>2.7.5</spring-boot.version>
-    <jacoco.version>0.8.12</jacoco.version>
-    <commons-dbcp.version>1.4</commons-dbcp.version>
-    <htmlunit.version>4.7.0</htmlunit.version>
-    <gson.version>2.11.0</gson.version>
-    <guice.version>6.0.0</guice.version>
-    <system-lambda.version>1.1.0</system-lambda.version>
-    <maven-surefire-plugin.version>3.5.2</maven-surefire-plugin.version>
-    <maven-checkstyle-plugin.version>3.6.0</maven-checkstyle-plugin.version>
-    <license-maven-plugin.version>4.6</license-maven-plugin.version>
-    <urm-maven-plugin.version>2.1.1</urm-maven-plugin.version>
-    <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
-    <lombok.version>1.18.36</lombok.version>
+  <dependencies>
+    <!-- JUnit 5 API and Engine -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.10.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>5.10.1</version>
+      <scope>test</scope>
+    </dependency>
 
-    <!-- SonarCloud -->
-    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-    <sonar.organization>iluwatar</sonar.organization>
-    <sonar.projectKey>iluwatar_java-design-patterns</sonar.projectKey>
-    <sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
-    <sonar.projectName>Java Design Patterns</sonar.projectName>
-  </properties>
-
-  <modules>
-    <!-- All your modules here -->
-    <module>abstract-factory</module>
-    <module>collecting-parameter</module>
-    <module>monitor</module>
-    <!-- ... snipped for brevity ... -->
-  </modules>
+    <!-- JUnit 4 (if needed) -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
   <build>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.jacoco</groupId>
-          <artifactId>jacoco-maven-plugin</artifactId>
-          <version>${jacoco.version}</version>
-          <executions>
-            <execution>
-              <id>prepare-agent</id>
-              <goals>
-                <goal>prepare-agent</goal>
-              </goals>
-              <phase>initialize</phase>
-            </execution>
-            <execution>
-              <id>report</id>
-              <goals>
-                <goal>report</goal>
-              </goals>
-              <phase>verify</phase>
-            </execution>
-            <execution>
-              <id>report-aggregate</id>
-              <goals>
-                <goal>report-aggregate</goal>
-              </goals>
-              <phase>verify</phase>
-            </execution>
-          </executions>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-
     <plugins>
+      <!-- Surefire plugin to enable JUnit 5 -->
       <plugin>
-        <groupId>org.jacoco</groupId>
-        <artifactId>jacoco-maven-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.1.2</version>
+        <configuration>
+          <includes>
+            <include>**/*Test.java</include>
+          </includes>
+        </configuration>
       </plugin>
     </plugins>
   </build>
