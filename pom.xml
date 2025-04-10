@@ -44,7 +44,6 @@
     <module>collecting-parameter</module>
     <module>monitor</module>
     <!-- ... snipped for brevity ... -->
-    <module>microservices-event-driven</module>
   </modules>
 
   <build>
